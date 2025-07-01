@@ -6,7 +6,7 @@ COPY / /
 # TODO: Add the build of the Acer driver (using bazzite-kernel or fsync-ba-kernel as a base?)
 
 # Base Image
-FROM ghcr.io/ublue-os/bazzite-dx-nvidia-open:stable-daily
+FROM ghcr.io/ublue-os/bazzite-dx-nvidia-open:stable
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
