@@ -1,9 +1,12 @@
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
-COPY build_files /
+# Modified: It's idiotic to not include all the files in the build context
+COPY / /
+
+# TODO: Add the build of the Acer driver (using bazzite-kernel or fsync-ba-kernel as a base?)
 
 # Base Image
-FROM ghcr.io/ublue-os/bazzite:stable
+FROM ghcr.io/ublue-os/bazzite-dx-nvidia-open:stable-daily
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
@@ -17,12 +20,17 @@ FROM ghcr.io/ublue-os/bazzite:stable
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
+ARG GITHUB_USERNAME
+ARG IMAGE_REGISTRY
+ARG IMAGE_NAME
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh && \
+    /ctx/build_files/signing.sh "${GITHUB_USERNAME}" "${IMAGE_REGISTRY}" "${IMAGE_NAME}" && \
+    /ctx/build_files/build.sh && \
+    /ctx/build_files/cleanup.sh && \
     ostree container commit
     
 ### LINTING
