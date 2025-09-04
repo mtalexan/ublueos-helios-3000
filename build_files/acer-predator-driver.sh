@@ -25,6 +25,9 @@ echo "facer" > /etc/modules-load.d/facer.conf
 
 # Install the python control scripts
 install -m 544 -Z -t /usr/bin keyboard.py facer_rgb.py
+# TODO: Fix the keyboard.py so it looks for facer_rgb.py in the system PATH or the script_dir rather than assuming it's in the calling dir
+# TODO: Fix these two scripts to include the #!/usr/bin/env python3 shebang
+
 
 # Clean up the folder we cloned and built in
 popd
