@@ -19,8 +19,8 @@ make -C ${KERNEL_DIR} M=$(pwd) modules
 make -C ${KERNEL_DIR} M=$(pwd) modules_install
 
 # Add the drop-in for modprobe to auto-load the driver on boot.
-mkdir -p /usr/etc/modules-load.d
-echo "facer" > /usr/etc/modules-load.d/facer.conf
+mkdir -p /etc/modules-load.d
+echo "facer" > /etc/modules-load.d/facer.conf
 
 # Install the python control scripts
 install -m 544 -Z -t /usr/bin keyboard.py facer_rgb.py
