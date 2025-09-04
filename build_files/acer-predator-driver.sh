@@ -1,4 +1,5 @@
 #!/bin/bash
+# Not currently used!
 
 set -ouex pipefail
 
