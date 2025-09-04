@@ -32,8 +32,8 @@ dnf5 install -y \
     plasma-discover-snap
 
 /ctx/build_files/cloudflare_warp.sh
+/ctx/build_files/acer-predator-driver.sh
 
-    
 # Add the nix mountpoint
 install -d -m 0755 /nix
 
