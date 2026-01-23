@@ -31,7 +31,8 @@ dnf5 install -y \
     plasma-discover-rpm-ostree \
     plasma-discover-snap
 
-/ctx/build_files/cloudflare_warp.sh
+# Don't install cloudflare warp natively anymore
+#/ctx/build_files/cloudflare_warp.sh
 
 # Add the nix mountpoint
 install -d -m 0755 /nix
