@@ -31,7 +31,7 @@ COPY / /
 #    /ctx/build_files/acer-predator-driver.sh
 
 # Base Image
-FROM ghcr.io/ublue-os/bazzite-dx-nvidia:stable as prod
+FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:stable as prod
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
