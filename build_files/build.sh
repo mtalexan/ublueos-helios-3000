@@ -29,7 +29,8 @@ dnf5 install -y \
     marble-plasma \
     plasma-discover-offline-updates \
     plasma-discover-rpm-ostree \
-    plasma-discover-snap
+    plasma-discover-snap \
+    steam
 
 # Don't install cloudflare warp natively anymore
 #/ctx/build_files/cloudflare_warp.sh
