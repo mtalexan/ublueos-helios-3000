@@ -31,6 +31,7 @@ COPY / /
 #    /ctx/build_files/acer-predator-driver.sh
 
 # Base Image
+# :stable is updated weekly, :stable-daily is updated daily, :latest is bleeding edge unstable
 FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:stable as prod
 
 ## Other possible base images include:
