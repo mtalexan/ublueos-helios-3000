@@ -32,8 +32,7 @@ dnf install -y \
 dnf5 install -y \
     imsettings-plasma \
     kclock-plasma-applet \
-    marble-plasma \
-    steam
+    marble-plasma
 
 # Mobile device interaction tools
 dnf5 install -y \
