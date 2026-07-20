@@ -2,6 +2,9 @@
 
 set -ouex pipefail
 
+# Copy the contents of system_files/ of the git repo to /
+cp -avf "/ctx/system_files"/. /
+
 # /opt is a symlink to /var/opt which cannot be part of the image.
 # We need the content RPMs install to actually go to /usr/share/factory.
 # Temporarily remove the symlink and point it to the correct location. We'll undo
@@ -20,20 +23,27 @@ popd
 # Packages can be installed from any enabled yum repo on the image.
 # RPMfusion repos are available by default in ublue main images
 # List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
+# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/44/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # Install KDE extras
 dnf5 install -y \
     imsettings-plasma \
     kclock-plasma-applet \
     marble-plasma \
-    plasma-discover-offline-updates \
-    plasma-discover-rpm-ostree \
-    plasma-discover-snap \
     steam
 
-# Don't install cloudflare warp natively anymore
+# Mobile device interaction tools
+dnf5 install -y \
+    idevicerestore \
+    # android-tools is already installed \
+    #android-tools
+
+# Don't install the cloudflare warp package anymore
 #/ctx/build_files/cloudflare_warp.sh
+
+# tio for serial
+dnf5 install -y \
+    tio
 
 # Add the nix mountpoint
 install -d -m 0755 /nix
