@@ -30,9 +30,9 @@ COPY / /
 #    /ctx/build_files/acer-predator-driver.sh
 
 # Base Image
-FROM ghcr.io/ublue-os/aurora-dx:stable as prod
-# :stable is updated weekly, :stable-daily is daily, :latest is bleeding edge unstable.
-#FROM ghcr.io/ublue-os/aurora-dx:stable
+# Stream options are listed here: https://docs.getaurora.dev/guides/release-streams/
+# Undocumented is the aurora-dx w/ nvidia
+FROM ghcr.io/ublue-os/aurora-dx-nvidia-open:stable as prod
 
 # Must modify the Justfile to actually pass these.
 # These must be present to be able to add the cosign.pub key as a signing key so subsequent updates can be signature-checked.
